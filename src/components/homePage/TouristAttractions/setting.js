@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import { GlobalStateContext } from "../../../handler/useReducer";
+
+const { contentTranslated } = useContext(GlobalStateContext);
+console.log(contentTranslated);
+
 export const blogs = [
   {
-    title: "Chùa Linh Phước",
-    description:
-      "Chùa Linh Phước Đà Lạt còn được biết đến với tên Chùa Ve Chai ,các bạn chắc chắn có được trải nghiệm văn hoá, nghệ thuật độc đáo; đồng thời, mục sở thị lối kiến trúc cổ kính.",
+    title: contentTranslated.LinhPhuocTittle,
+    description: contentTranslated.LinhPhuocDescribe,
     timeDelay: "delay-06",
     img: "./images/p-1.jpg",
     link: "1",

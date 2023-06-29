@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import CountryList from "../CountryList";
+import { GlobalStateContext } from "../../handler/useReducer";
 
 const Header = () => {
   const searchBtn = useRef(null);
@@ -35,7 +37,8 @@ const Header = () => {
       window.removeEventListener("scroll", handleKeyScroll);
     };
   }, []);
-
+  const { contentTranslated } = useContext(GlobalStateContext);
+  console.log(contentTranslated);
   return (
     <>
       <header id="header">
@@ -49,13 +52,12 @@ const Header = () => {
           <span>D</span>alala
         </Link>
         <nav class="navbar" ref={navbar}>
-          <Link to="/">Trang chủ</Link>
-          <a href="#touristAttractions">Địa điểm nổi bật</a>
-          <a href="#foodAndDrink">Ẩm thực</a>
-          <a href="#review">Cảm nhận</a>
+          <Link to="/">{contentTranslated.homePage}</Link>
+          <a href="#touristAttractions">{contentTranslated.prominentPlace}</a>
+          <a href="#foodAndDrink">{contentTranslated.foodSection}</a>
+          <a href="#review">{contentTranslated.feedback}</a>
           <CountryList />
         </nav>
-
 
         <div class="icons">
           <i
